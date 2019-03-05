@@ -1,6 +1,6 @@
 # proyecto_json
 **preguntas json**
-1. Pide un tiempo en horas por teclado y lista los héroes con los que se ha jugado ese o mas tiempo.
+1. Lista los héroes.
 
 2. Contar con cuantos Héroes has conseguido mas o las mismas medallas de oro que especifiques por teclado.
 
