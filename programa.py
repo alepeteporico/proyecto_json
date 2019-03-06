@@ -2,19 +2,41 @@ import json
 with open("overwatch-api-complete-player-profile-example.json") as fichero:
     datos=json.load(fichero)
 
-cont=0
-lista_datos=[]
-lista_heroes=[]
-lista_oro=[]
 lista_win=[]
 lista_vic_derr=[]
 lista_daño=[]
 
-def ejer1(datos,lista_heroes):
+def ejer1(datos):
+    lista_heroes=[]
     lista_heroes=(datos.get("quickplay").get("heroComparison").get("timePlayed"))
     for heroe in lista_heroes.keys():
         print("-",heroe)
     print("")
+
+
+def ejer2(datos):
+    lista_datos=[]
+    lista_oro=[]
+    medallas=int(input("Dime cuantas medallas especificas: "))
+    lista_datos=(datos["quickplay"]["careerStats"])
+    cont=0
+
+    for campo,valor in lista_datos.items():
+        for c,v in valor.items():
+        
+            if c=="matchAwards":
+
+                lista_oro.append(v.get("medalsGold",0))
+                
+    print(len(lista_oro))
+                    
+    for num in lista_oro:
+            
+        if num>=medallas:
+           cont=cont+1
+
+    print("Has conseguido %d medallas o mas con %d héroes"%(medallas,cont-1))
+
 
 while True:
     print("================================================================================")
@@ -32,25 +54,13 @@ while True:
         break
     
     elif elec==1:
-        ejer1(datos,lista_heroes)
+        ejer1(datos)
         print("------------------------------")
         intro=input("Pulsa enter para continuar")
         print("")
     
     elif elec==2:
-        medallas=int(input("Dime cuantas medallas especificas: "))
-        lista_datos=(datos["quickplay"]["careerStats"])
-
-        for campo,valor in lista_datos.items():
-            for c,v in valor.items():
-            
-                if c=="matchAwards":
-
-                    lista_oro.append(v.get("medalsGold",0))
-                    
-        for num in lista_oro:
-            
-            if num>=medallas:
-               cont=cont+1
-
-        print("Has conseguido %d medallas o mas con %d héroes"%(medallas,cont-1))
+        ejer2(datos)
+        print("------------------------------")
+        intro=input("Pulsa enter para continuar")
+        print("")
