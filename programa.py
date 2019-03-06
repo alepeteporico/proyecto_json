@@ -2,6 +2,8 @@ import json
 with open("overwatch-api-complete-player-profile-example.json") as fichero:
     datos=json.load(fichero)
 
+cont=0
+lista_datos=[]
 lista_heroes=[]
 lista_oro=[]
 lista_win=[]
@@ -29,10 +31,26 @@ while True:
     if elec==6:
         break
     
-    if elec==1:
+    elif elec==1:
         ejer1(datos,lista_heroes)
         print("------------------------------")
         intro=input("Pulsa enter para continuar")
         print("")
     
+    elif elec==2:
+        medallas=int(input("Dime cuantas medallas especificas: "))
+        lista_datos=(datos["quickplay"]["careerStats"])
+
+        for campo,valor in lista_datos.items():
+            for c,v in valor.items():
             
+                if c=="matchAwards":
+
+                    lista_oro.append(v.get("medalsGold",0))
+                    
+        for num in lista_oro:
+            
+            if num>=medallas:
+               cont=cont+1
+
+        print("Has conseguido %d medallas o mas con %d héroes"%(medallas,cont-1))
