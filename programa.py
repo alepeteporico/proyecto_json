@@ -8,6 +8,12 @@ lista_win=[]
 lista_vic_derr=[]
 lista_daño=[]
 
+def ejer1(datos,lista_heroes):
+    lista_heroes=(datos.get("quickplay").get("heroComparison").get("timePlayed"))
+    for heroe in lista_heroes.keys():
+        print("-",heroe)
+    print("")
+
 while True:
     print("================================================================================")
     print("1.Lista los heroes")
@@ -24,13 +30,9 @@ while True:
         break
     
     if elec==1:
-        lista_heroes=(datos.get("quickplay").get("heroComparison").get("timePlayed"))
-        for heroe in lista_heroes.keys():
-            print("-",heroe)
+        ejer1(datos,lista_heroes)
+        print("------------------------------")
+        intro=input("Pulsa enter para continuar")
         print("")
-    
-    print("------------------------------")
-    intro=input("Pulsa enter para continuar")
-    print("")
     
             
