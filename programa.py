@@ -1,5 +1,12 @@
-with open("overwatch-api-complete-player-profile-example.json") as fichero
-datos=json.load(fichero)
+import json
+with open("overwatch-api-complete-player-profile-example.json") as fichero:
+    datos=json.load(fichero)
+
+lista_heroes=[]
+lista_oro=[]
+lista_win=[]
+lista_vic_derr=[]
+lista_daño=[]
 
 while True:
     print("================================================================================")
@@ -12,3 +19,18 @@ while True:
     print("================================================================================")
     elec=int(input("Elige una opción: "))
     print("")
+
+    if elec==6:
+        break
+    
+    if elec==1:
+        lista_heroes=(datos.get("quickplay").get("heroComparison").get("timePlayed"))
+        for heroe in lista_heroes.keys():
+            print("-",heroe)
+        print("")
+    
+    print("------------------------------")
+    intro=input("Pulsa enter para continuar")
+    print("")
+    
+            
