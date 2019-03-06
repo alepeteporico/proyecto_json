@@ -37,6 +37,7 @@ def ejer2(datos):
 
     print("Has conseguido %d medallas o mas con %d héroes"%(medallas,cont-1))
 
+<<<<<<< HEAD
 def ejer3(datos):
     lista_win=[]
     
@@ -51,6 +52,8 @@ def ejer3(datos):
     print("")
     
 
+=======
+>>>>>>> 6cdc6d56bb5caaa5656f8287d8801493e5480669
 
 while True:
     print("================================================================================")
@@ -77,10 +80,13 @@ while True:
         ejer2(datos)
         print("------------------------------")
         intro=input("Pulsa enter para continuar")
+<<<<<<< HEAD
         print("")
 
     elif elec==3:
         ejer3(datos)
         print("------------------------------")
         intro=input("Pulsa enter para continuar")
+=======
+>>>>>>> 6cdc6d56bb5caaa5656f8287d8801493e5480669
         print("")
