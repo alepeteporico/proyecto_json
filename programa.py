@@ -2,8 +2,7 @@ import json
 with open("overwatch-api-complete-player-profile-example.json") as fichero:
     datos=json.load(fichero)
 
-lista_win=[]
-lista_vic_derr=[]
+
 lista_daño=[]
 
 def ejer1(datos):
@@ -27,8 +26,6 @@ def ejer2(datos):
             if c=="matchAwards":
 
                 lista_oro.append(v.get("medalsGold",0))
-                
-    print(len(lista_oro))
                     
     for num in lista_oro:
             
@@ -37,7 +34,6 @@ def ejer2(datos):
 
     print("Has conseguido %d medallas o mas con %d héroes"%(medallas,cont-1))
 
-<<<<<<< HEAD
 def ejer3(datos):
     lista_win=[]
     
@@ -51,16 +47,33 @@ def ejer3(datos):
             print("-",heroe)
     print("")
     
+def ejer4(datos):
+    lista_datos=[]
+    lista_eliminaciones=[]
+    lista_muertes=[]
 
-=======
->>>>>>> 6cdc6d56bb5caaa5656f8287d8801493e5480669
+    personaje=input("Dime un personaje: ")
+
+    lista_datos=(datos["quickplay"]["careerStats"])
+
+    for campo,valor in lista_datos.items():
+        if campo==personaje:
+            for c,v in valor.items():
+                if  c=="combat":
+
+                    lista_muertes=(v.get("deaths"))
+                    lista_eliminaciones=(v.get("eliminations"))
+
+    print("Con",personaje,"has muerto",lista_muertes,"veces y has eliminado a",lista_eliminaciones,"eneimigo/s")
+    print("")
+
 
 while True:
     print("================================================================================")
     print("1.Lista los heroes")
     print("2.Contar con cuantos Héroes has conseguido mas o las mismas medallas de oro que especifiques por teclado.")
     print("3.Pide por teclado un numero de partidas ganadas y te lista los héroes con los que has conseguido esas o mas victorias.")
-    print("4.Mostrar las victorias y derrotas de un héroe introducido por teclado")
+    print("4.Mostrar las muertes y asesinatos de un héroe introducido por teclado")
     print("5.Pides por teclado un numero de daño y te muestra los héroes con los que has realizado menos daño.")
     print("6.Salir")
     print("================================================================================")
@@ -80,13 +93,16 @@ while True:
         ejer2(datos)
         print("------------------------------")
         intro=input("Pulsa enter para continuar")
-<<<<<<< HEAD
         print("")
 
     elif elec==3:
         ejer3(datos)
         print("------------------------------")
         intro=input("Pulsa enter para continuar")
-=======
->>>>>>> 6cdc6d56bb5caaa5656f8287d8801493e5480669
+        print("")
+    
+    elif elec==4:
+        ejer4(datos)
+        print("------------------------------")
+        intro=input("Pulsa enter para continuar")
         print("")
