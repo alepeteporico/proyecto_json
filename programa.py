@@ -3,7 +3,6 @@ with open("overwatch-api-complete-player-profile-example.json") as fichero:
     datos=json.load(fichero)
 
 
-lista_daño=[]
 
 def ejer1(datos):
     lista_heroes=[]
@@ -67,13 +66,29 @@ def ejer4(datos):
     print("Con",personaje,"has muerto",lista_muertes,"veces y has eliminado a",lista_eliminaciones,"eneimigo/s")
     print("")
 
+def ejer5(datos):
+    lista_datos=[]
+    lista_daño=[]
+
+    daño=int(input("Dime el daño que especificas: "))
+    print("----------------------------")
+    lista_datos=(datos["quickplay"]["careerStats"])
+
+    print("Has hecho menos de %d puntos de daño con:"%(daño))
+    for heroe,valor in lista_datos.items():
+        for c,v in valor.items():
+            if c=="combat" and heroe!="allHeroes":
+                lista_daño=(v.get("allDamageDone"))
+                if lista_daño<daño:
+                    print("-",heroe)
+    print("")
 
 while True:
     print("================================================================================")
     print("1.Lista los heroes")
     print("2.Contar con cuantos Héroes has conseguido mas o las mismas medallas de oro que especifiques por teclado.")
     print("3.Pide por teclado un numero de partidas ganadas y te lista los héroes con los que has conseguido esas o mas victorias.")
-    print("4.Mostrar las muertes y asesinatos de un héroe introducido por teclado")
+    print("4.Mostrar las muertes y asesinatos de un héroe introducido por teclado.")
     print("5.Pides por teclado un numero de daño y te muestra los héroes con los que has realizado menos daño.")
     print("6.Salir")
     print("================================================================================")
@@ -103,6 +118,12 @@ while True:
     
     elif elec==4:
         ejer4(datos)
+        print("------------------------------")
+        intro=input("Pulsa enter para continuar")
+        print("")
+
+    elif elec==5:
+        ejer5(datos)
         print("------------------------------")
         intro=input("Pulsa enter para continuar")
         print("")
