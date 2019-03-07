@@ -54,18 +54,19 @@ def ejer4(datos):
     personaje=input("Dime un personaje: ")
 
     lista_datos=(datos["quickplay"]["careerStats"])
+    if personaje in lista_datos:
+        for campo,valor in lista_datos.items():
+            if campo==personaje:
+                for c,v in valor.items():
+                    if  c=="combat":
 
-    for campo,valor in lista_datos.items():
-        if campo==personaje:
-            for c,v in valor.items():
-                if  c=="combat":
+                        lista_muertes=(v.get("deaths"))
+                        lista_eliminaciones=(v.get("eliminations"))
 
-                    lista_muertes=(v.get("deaths"))
-                    lista_eliminaciones=(v.get("eliminations"))
-
-    print("Con",personaje,"has muerto",lista_muertes,"veces y has eliminado a",lista_eliminaciones,"eneimigo/s")
-    print("")
-
+        print("Con",personaje,"has muerto",lista_muertes,"veces y has eliminado a",lista_eliminaciones,"eneimigo/s")
+        print("")
+    else:
+        print("EL PERSONAJE INTRODUCIDO NO EXISTE, SE HA ESCRITO INCORRECTAMENTE O QUIZÁS NO SE HAYA JUGADO CON EL NINGUNA PARTIDA (doomfist), RECUERDA QUE PUEDES LISTAR LOS PERSONAJES CON LA OPCIÓN 1")
 def ejer5(datos):
     lista_datos=[]
     lista_daño=[]
@@ -124,6 +125,12 @@ while True:
 
     elif elec==5:
         ejer5(datos)
+        print("------------------------------")
+        intro=input("Pulsa enter para continuar")
+        print("")
+
+    else:
+        print("EL PARAMETRO INTRODUCIDO NO ESTÁ ESPECIFICADO")
         print("------------------------------")
         intro=input("Pulsa enter para continuar")
         print("")
